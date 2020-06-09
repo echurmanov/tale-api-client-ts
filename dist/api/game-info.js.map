@@ -1,0 +1,1 @@
+{"version":3,"file":"game-info.js","sourceRoot":"","sources":["../../src/api/game-info.ts"],"names":[],"mappings":";;;AAcA,SAAgB,oBAAoB;IAChC,OAAO;QACH,GAAG,EAAE,WAAW;QAChB,WAAW,EAAE,KAAK;QAClB,MAAM,EAAE,KAAK;QACb,UAAU,EAAE,EAAE;KACjB,CAAA;AACL,CAAC;AAPD,oDAOC"}

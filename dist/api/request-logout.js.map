@@ -1,0 +1,1 @@
+{"version":3,"file":"request-logout.js","sourceRoot":"","sources":["../../src/api/request-logout.ts"],"names":[],"mappings":";;;AAOA,SAAgB,eAAe;IAC3B,OAAO;QACH,GAAG,EAAE,2BAA2B;QAChC,WAAW,EAAE,KAAK;QAClB,MAAM,EAAE,MAAM;QACd,UAAU,EAAE,EAAE;KACjB,CAAA;AACL,CAAC;AAPD,0CAOC"}
