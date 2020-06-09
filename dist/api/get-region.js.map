@@ -1,0 +1,1 @@
+{"version":3,"file":"get-region.js","sourceRoot":"","sources":["../../src/api/get-region.ts"],"names":[],"mappings":";;;AAsDA,SAAgB,kBAAkB,CAAC,IAAa;IAC5C,OAAO;QACH,GAAG,EAAE,sBAAsB;QAC3B,WAAW,EAAE,KAAK;QAClB,MAAM,EAAE,KAAK;QACb,UAAU,EAAE,EAAE;QACd,MAAM,EAAE;YACJ,IAAI;SACP;KACJ,CAAA;AACL,CAAC;AAVD,gDAUC"}
