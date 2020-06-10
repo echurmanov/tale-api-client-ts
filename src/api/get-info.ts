@@ -184,7 +184,7 @@ export interface IApiInfoResponse extends TApiSuccessResponse {
     }
 }
 
-export function getInfoRequestV1(account?: number, clientTurns?: number[]): IRequest {
+export function getInfoRequestV1v9(account?: number, clientTurns?: number[]): IRequest {
     return {
         uri: '/game/api/info',
         api_version: '1.9',

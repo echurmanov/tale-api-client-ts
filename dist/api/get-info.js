@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getInfoRequestV1 = void 0;
-function getInfoRequestV1(account, clientTurns) {
+exports.getInfoRequestV1v9 = void 0;
+function getInfoRequestV1v9(account, clientTurns) {
     return {
         uri: '/game/api/info',
         api_version: '1.9',
@@ -13,5 +13,5 @@ function getInfoRequestV1(account, clientTurns) {
         }
     };
 }
-exports.getInfoRequestV1 = getInfoRequestV1;
+exports.getInfoRequestV1v9 = getInfoRequestV1v9;
 //# sourceMappingURL=get-info.js.map

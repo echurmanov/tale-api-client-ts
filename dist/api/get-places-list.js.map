@@ -1,1 +1,1 @@
-{"version":3,"file":"get-places-list.js","sourceRoot":"","sources":["../../src/api/get-places-list.ts"],"names":[],"mappings":";;;AAsBA,SAAgB,sBAAsB;IAClC,OAAO;QACH,GAAG,EAAE,uBAAuB;QAC5B,WAAW,EAAE,KAAK;QAClB,MAAM,EAAE,KAAK;QACb,UAAU,EAAE,EAAE;KACjB,CAAA;AACL,CAAC;AAPD,wDAOC"}
+{"version":3,"file":"get-places-list.js","sourceRoot":"","sources":["../../src/api/get-places-list.ts"],"names":[],"mappings":";;;AAsBA,SAAgB,wBAAwB;IACpC,OAAO;QACH,GAAG,EAAE,uBAAuB;QAC5B,WAAW,EAAE,KAAK;QAClB,MAAM,EAAE,KAAK;QACb,UAAU,EAAE,EAAE;KACjB,CAAA;AACL,CAAC;AAPD,4DAOC"}

@@ -52,7 +52,7 @@ export interface IApiRegionResponse extends TApiSuccessResponse {
     }
 }
 
-export function getRegionRequestV1(turn?: number): IRequest {
+export function getRegionRequestV0v1(turn?: number): IRequest {
     return {
         uri: '/game/map/api/region',
         api_version: '0.1',

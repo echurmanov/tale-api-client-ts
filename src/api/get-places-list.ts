@@ -20,7 +20,7 @@ export interface IApiPlacesListResponse extends TApiSuccessResponse {
     }
 }
 
-export function getPlacesListRequestV1(): IRequest {
+export function getPlacesListRequestV1v1(): IRequest {
     return {
         uri: '/game/places/api/list',
         api_version: '1.1',
