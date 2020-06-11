@@ -1,21 +1,12 @@
 import { IRequest } from "../types/request";
 import { TApiSuccessResponse } from "../types/response";
+import {IPlace} from "../types/game-entities";
 
 export interface IApiPlacesListResponse extends TApiSuccessResponse {
     data: {
-        "places": Record<                   // перечень всех городов
-            number,                         // идентификатор города: информация о нём
-            {
-                "id": number;               // идентификатор города
-                "name": string;             // название города
-                "frontier": boolean;        // находится ли город на фронтире
-                "position": {               // координаты города на карте
-                    "x": number;
-                    "y": number;
-                }; // (могут меняться при изменении размера карты!)
-                "size": number;             // размер города
-                "specialization": number;   // идентификатор специализации
-            }
+        places: Record<     // перечень всех городов
+            number,         // идентификатор города: информация о нём
+            IPlace
         >
     }
 }

@@ -19,9 +19,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.API = void 0;
+exports.GameTypes = exports.API = void 0;
 const api = __importStar(require("./api"));
+const gameTypes = __importStar(require("./types/game-entities"));
 var client_1 = require("./client");
 Object.defineProperty(exports, "Client", { enumerable: true, get: function () { return client_1.Client; } });
 exports.API = api;
+exports.GameTypes = gameTypes;
 //# sourceMappingURL=index.js.map
