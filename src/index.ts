@@ -1,7 +1,10 @@
-import * as api from './api';
-import * as gameTypes from './types/game-entities';
+import * as API from './api';
+import * as GameTypes from './types/game-entities';
 
-export { Client } from './client';
+import { Client } from './client';
 
-export const API = api;
-export const GameTypes = gameTypes;
+export {
+    API,
+    Client,
+    GameTypes
+}

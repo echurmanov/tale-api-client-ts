@@ -1,6 +1,6 @@
 {
     "name": "tale-api-client-ts",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "description": "The Tale Game API client",
     "main": "dist/index.js",
     "types": "src/index.ts",
