@@ -107,6 +107,25 @@ export class Client {
         throw response;
     }
 
+    async getInfo(accountId?: number, clientTurns?: number[]): Promise<API.IApiInfoResponse> {
+        if (!accountId && !this.credentials) {
+            throw new Error("Нужно быть авторизованыи или передать accountId");
+        }
+
+        const { headers, response } = await this.request(
+            this.host,
+            this.client,
+            API.getInfoRequestV1v9(accountId, clientTurns),
+            this.credentials
+        );
+
+        if (successResponseTypeGuard(response)) {
+            return (response as API.IApiInfoResponse);
+        }
+
+        throw response;
+    }
+
     async getPlacesList(): Promise<API.IApiPlacesListResponse> {
         const { headers, response } = await this.request(
             this.host,
