@@ -93,6 +93,18 @@ class Client {
             throw response;
         });
     }
+    getInfo(accountId, clientTurns) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (!accountId && !this.credentials) {
+                throw new Error("Нужно быть авторизованыи или передать accountId");
+            }
+            const { headers, response } = yield this.request(this.host, this.client, API.getInfoRequestV1v9(accountId, clientTurns), this.credentials);
+            if (response_1.successResponseTypeGuard(response)) {
+                return response;
+            }
+            throw response;
+        });
+    }
     getPlacesList() {
         return __awaiter(this, void 0, void 0, function* () {
             const { headers, response } = yield this.request(this.host, this.client, API.getPlacesListRequestV1v1(), this.credentials);
