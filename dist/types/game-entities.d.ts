@@ -1,3 +1,22 @@
+export declare enum EHeroAction {
+    NO_ACTION = 0,
+    QUEST_PROCESS = 1,
+    BATTLE_MOB = 3,
+    DEAD = 4,
+    IN_TOWN = 5,
+    HEALING = 6,
+    CHANGE_EQUIPMENT = 7,
+    TRADING = 8,
+    RETUAL = 10,
+    QUEST_MIDDLE_ACTION = 11,
+    HERO_RELATIONS = 12,
+    BATTLE_HERO = 13,
+    MOCK_TEST = 14,
+    HEALING_COMPANION = 15,
+    FIRST_ACTION = 16,
+    MOVING = 17,
+    CHOOSE_WAY = 18
+}
 export interface IAccountInfo {
     new_messages: number;
     id: number;
@@ -83,7 +102,7 @@ export interface IHeroInfo {
         percents: number;
         description: string;
         info_link: string | null;
-        type: number;
+        type: EHeroAction;
         data: null | any;
     };
     position: {
