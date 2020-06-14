@@ -6,6 +6,7 @@ export interface IRequest {
     params?: Record<string, string | number>;
 }
 export interface IRequestCredentials {
+    accountId?: number;
     sessionId?: string;
     csrfToken: string;
 }

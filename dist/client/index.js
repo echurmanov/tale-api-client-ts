@@ -33,6 +33,7 @@ const API = __importStar(require("../api"));
 const response_1 = require("../types/response");
 const cookie_parser_1 = require("../utils/cookie-parser");
 const csrf_token_1 = require("../utils/csrf-token");
+const api_1 = require("../api");
 class Client {
     constructor(client, host = 'the-tale.org', protocol = 'https', credentials, debug = false) {
         this.client = client;
@@ -60,10 +61,10 @@ class Client {
     }
     getAccountInfo(accountId) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (!accountId && !this.credentials) {
+            if (!accountId && (!this.credentials || !this.credentials.accountId)) {
                 throw new Error("Нужно быть авторизованыи или передать accountId");
             }
-            const { headers, response } = yield this.request(this.host, this.client, API.getAccountInfoRequestV1(accountId), this.credentials, this.debug);
+            const { headers, response } = yield this.request(this.host, this.client, API.getAccountInfoRequestV1(accountId || this.credentials.accountId), this.credentials, this.debug);
             if (response_1.successResponseTypeGuard(response)) {
                 return response;
             }
@@ -75,6 +76,9 @@ class Client {
             const { headers, response } = yield this.request(this.host, this.client, API.getAuthorisationStateV1(), this.credentials, this.debug);
             if (response_1.successResponseTypeGuard(response)) {
                 this.updateCredentialByResponseHeaders(headers);
+                if (response.data.state === api_1.AUTH_STATE.SUCCESS) {
+                    this.credentials.accountId = response.data.account_id;
+                }
                 return response;
             }
             throw response;

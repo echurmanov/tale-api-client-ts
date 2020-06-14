@@ -3,6 +3,7 @@ import { IRequestCredentials } from "../types/request";
 import { successResponseTypeGuard } from '../types/response';
 import { cookieParser } from "../utils/cookie-parser";
 import { generateCsrf } from "../utils/csrf-token";
+import {AUTH_STATE} from "../api";
 
 export class Client {
     private readonly client: string;
@@ -53,14 +54,14 @@ export class Client {
     }
 
     async getAccountInfo(accountId?: number): Promise<API.IApiAccountInfoResponse> {
-        if (!accountId && !this.credentials) {
+        if (!accountId && (!this.credentials || !this.credentials.accountId)) {
             throw new Error("Нужно быть авторизованыи или передать accountId");
         }
 
         const { headers, response } = await this.request(
             this.host,
             this.client,
-            API.getAccountInfoRequestV1(accountId),
+            API.getAccountInfoRequestV1(accountId || this.credentials.accountId),
             this.credentials,
             this.debug
         );
@@ -83,6 +84,10 @@ export class Client {
 
         if (successResponseTypeGuard(response)) {
             this.updateCredentialByResponseHeaders(headers);
+
+            if (response.data.state === AUTH_STATE.SUCCESS) {
+                this.credentials.accountId = response.data.account_id;
+            }
 
             return (response as API.IApiAuthorisationStateResponse);
         }
