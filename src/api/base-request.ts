@@ -36,27 +36,30 @@ export async function requestHttp(
     host: string,
     client: string,
     apiRequest: IRequest,
-    credentials?: IRequestCredentials
+    credentials?: IRequestCredentials,
+    debug: boolean = false
 ): Promise<RequestResponse> {
-    return request(host, client, http, apiRequest, credentials);
+    return request(host, client, http, apiRequest, credentials, debug);
 }
 
 export async function requestHttps(
     host: string,
     client: string,
     apiRequest: IRequest,
-    credentials?: IRequestCredentials
+    credentials?: IRequestCredentials,
+    debug: boolean = false
 ): Promise<RequestResponse> {
-    return request(host, client, https, apiRequest, credentials);
+    return request(host, client, https, apiRequest, credentials, debug);
 }
 
 async function request( host: string,
                         client: string,
                         transport: typeof http | typeof https,
                         apiRequest: IRequest,
-                        credentials?: IRequestCredentials
+                        credentials?: IRequestCredentials,
+                        debug: boolean = false
 ): Promise<RequestResponse> {
-    const res = await requestRaw(host, client, https, apiRequest, credentials);
+    const res = await requestRaw(host, client, https, apiRequest, credentials, debug);
     try {
         const parsedBody = JSON.parse(res.body);
 
@@ -74,7 +77,8 @@ function requestRaw(
     client: string,
     transport: typeof http | typeof https,
     apiRequest: IRequest,
-    credentials?: IRequestCredentials
+    credentials?: IRequestCredentials,
+    debug: boolean = false
 ): Promise<HttpRequestResponse> {
     return new Promise<HttpRequestResponse>((success, reject) => {
         const { csrfToken = generateCsrf(), sessionId = generateCsrf() } = credentials || {};
@@ -98,6 +102,10 @@ function requestRaw(
             options.headers['Content-type'] = 'application/x-www-form-urlencoded';
             options.headers['Content-length'] = Buffer.from(encodedData).length;
             options.headers['x-csrftoken'] = csrfToken;
+        }
+
+        if (debug) {
+            console.log(options);
         }
 
         const req = transport.request(options, (response: http.IncomingMessage) => {

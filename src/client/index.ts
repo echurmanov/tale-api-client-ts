@@ -9,6 +9,7 @@ export class Client {
     private readonly host: string;
     private readonly protocol: 'http' | 'https';
     private readonly request: typeof API.requestHttp;
+    private readonly debug: boolean;
 
     private credentials?: IRequestCredentials;
 
@@ -16,12 +17,14 @@ export class Client {
         client: string,
         host:string = 'the-tale.org',
         protocol: 'http' | 'https' = 'https',
-        credentials?: IRequestCredentials
+        credentials?: IRequestCredentials,
+        debug: boolean = false
     ) {
         this.client = client;
         this.host = host;
         this.protocol = protocol;
         this.credentials = credentials;
+        this.debug = debug;
 
         this.request = protocol === 'https' ? API.requestHttps : API.requestHttp;
     }
@@ -58,7 +61,8 @@ export class Client {
             this.host,
             this.client,
             API.getAccountInfoRequestV1(accountId),
-            this.credentials
+            this.credentials,
+            this.debug
         );
 
         if (successResponseTypeGuard(response)) {
@@ -73,7 +77,8 @@ export class Client {
             this.host,
             this.client,
             API.getAuthorisationStateV1(),
-            this.credentials
+            this.credentials,
+            this.debug
         );
 
         if (successResponseTypeGuard(response)) {
@@ -90,7 +95,8 @@ export class Client {
             this.host,
             this.client,
             API.getDiaryRequestV1(),
-            this.credentials
+            this.credentials,
+            this.debug
         );
 
         if (successResponseTypeGuard(response)) {
@@ -105,7 +111,8 @@ export class Client {
             this.host,
             this.client,
             API.getGameInfoRequestV1(),
-            this.credentials
+            this.credentials,
+            this.debug
         );
 
         if (successResponseTypeGuard(response)) {
@@ -124,7 +131,8 @@ export class Client {
             this.host,
             this.client,
             API.getInfoRequestV1v9(accountId, clientTurns),
-            this.credentials
+            this.credentials,
+            this.debug
         );
 
         if (successResponseTypeGuard(response)) {
@@ -143,7 +151,8 @@ export class Client {
             this.host,
             this.client,
             API.getPlacesListRequestV1v1(),
-            this.credentials
+            this.credentials,
+            this.debug
         );
 
         if (successResponseTypeGuard(response)) {
@@ -158,7 +167,8 @@ export class Client {
             this.host,
             this.client,
             API.getRegionRequestV0v1(),
-            this.credentials
+            this.credentials,
+            this.debug
         );
 
         if (successResponseTypeGuard(response)) {
@@ -177,7 +187,8 @@ export class Client {
             this.host,
             this.client,
             API.requestAuthorisationV1(appName, description, requestInfo),
-            this.credentials
+            this.credentials,
+            this.debug
         );
 
         if (successResponseTypeGuard(response)) {

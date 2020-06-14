@@ -34,11 +34,12 @@ const response_1 = require("../types/response");
 const cookie_parser_1 = require("../utils/cookie-parser");
 const csrf_token_1 = require("../utils/csrf-token");
 class Client {
-    constructor(client, host = 'the-tale.org', protocol = 'https', credentials) {
+    constructor(client, host = 'the-tale.org', protocol = 'https', credentials, debug = false) {
         this.client = client;
         this.host = host;
         this.protocol = protocol;
         this.credentials = credentials;
+        this.debug = debug;
         this.request = protocol === 'https' ? API.requestHttps : API.requestHttp;
     }
     updateCredentialByResponseHeaders(headers) {
@@ -62,7 +63,7 @@ class Client {
             if (!accountId && !this.credentials) {
                 throw new Error("Нужно быть авторизованыи или передать accountId");
             }
-            const { headers, response } = yield this.request(this.host, this.client, API.getAccountInfoRequestV1(accountId), this.credentials);
+            const { headers, response } = yield this.request(this.host, this.client, API.getAccountInfoRequestV1(accountId), this.credentials, this.debug);
             if (response_1.successResponseTypeGuard(response)) {
                 return response;
             }
@@ -71,7 +72,7 @@ class Client {
     }
     getAuthorisationState() {
         return __awaiter(this, void 0, void 0, function* () {
-            const { headers, response } = yield this.request(this.host, this.client, API.getAuthorisationStateV1(), this.credentials);
+            const { headers, response } = yield this.request(this.host, this.client, API.getAuthorisationStateV1(), this.credentials, this.debug);
             if (response_1.successResponseTypeGuard(response)) {
                 this.updateCredentialByResponseHeaders(headers);
                 return response;
@@ -81,7 +82,7 @@ class Client {
     }
     getDiary() {
         return __awaiter(this, void 0, void 0, function* () {
-            const { headers, response } = yield this.request(this.host, this.client, API.getDiaryRequestV1(), this.credentials);
+            const { headers, response } = yield this.request(this.host, this.client, API.getDiaryRequestV1(), this.credentials, this.debug);
             if (response_1.successResponseTypeGuard(response)) {
                 return response;
             }
@@ -90,7 +91,7 @@ class Client {
     }
     getGameInfo() {
         return __awaiter(this, void 0, void 0, function* () {
-            const { headers, response } = yield this.request(this.host, this.client, API.getGameInfoRequestV1(), this.credentials);
+            const { headers, response } = yield this.request(this.host, this.client, API.getGameInfoRequestV1(), this.credentials, this.debug);
             if (response_1.successResponseTypeGuard(response)) {
                 return response;
             }
@@ -102,7 +103,7 @@ class Client {
             if (!accountId && !this.credentials) {
                 throw new Error("Нужно быть авторизованыи или передать accountId");
             }
-            const { headers, response } = yield this.request(this.host, this.client, API.getInfoRequestV1v9(accountId, clientTurns), this.credentials);
+            const { headers, response } = yield this.request(this.host, this.client, API.getInfoRequestV1v9(accountId, clientTurns), this.credentials, this.debug);
             if (response_1.successResponseTypeGuard(response)) {
                 if (!response.data.account) {
                     throw new Error("Account not found or wrong credentials");
@@ -114,7 +115,7 @@ class Client {
     }
     getPlacesList() {
         return __awaiter(this, void 0, void 0, function* () {
-            const { headers, response } = yield this.request(this.host, this.client, API.getPlacesListRequestV1v1(), this.credentials);
+            const { headers, response } = yield this.request(this.host, this.client, API.getPlacesListRequestV1v1(), this.credentials, this.debug);
             if (response_1.successResponseTypeGuard(response)) {
                 return response;
             }
@@ -123,7 +124,7 @@ class Client {
     }
     getRegion() {
         return __awaiter(this, void 0, void 0, function* () {
-            const { headers, response } = yield this.request(this.host, this.client, API.getRegionRequestV0v1(), this.credentials);
+            const { headers, response } = yield this.request(this.host, this.client, API.getRegionRequestV0v1(), this.credentials, this.debug);
             if (response_1.successResponseTypeGuard(response)) {
                 return response;
             }
@@ -132,7 +133,7 @@ class Client {
     }
     requestAuthorisation(appName, description, requestInfo) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { headers, response } = yield this.request(this.host, this.client, API.requestAuthorisationV1(appName, description, requestInfo), this.credentials);
+            const { headers, response } = yield this.request(this.host, this.client, API.requestAuthorisationV1(appName, description, requestInfo), this.credentials, this.debug);
             if (response_1.successResponseTypeGuard(response)) {
                 this.updateCredentialByResponseHeaders(headers);
                 return response;

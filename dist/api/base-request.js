@@ -24,21 +24,21 @@ function buildBaseApiUrl(request) {
     };
     return `${request.uri}?${querystring_1.default.encode(baseParams)}`;
 }
-function requestHttp(host, client, apiRequest, credentials) {
+function requestHttp(host, client, apiRequest, credentials, debug = false) {
     return __awaiter(this, void 0, void 0, function* () {
-        return request(host, client, http_1.default, apiRequest, credentials);
+        return request(host, client, http_1.default, apiRequest, credentials, debug);
     });
 }
 exports.requestHttp = requestHttp;
-function requestHttps(host, client, apiRequest, credentials) {
+function requestHttps(host, client, apiRequest, credentials, debug = false) {
     return __awaiter(this, void 0, void 0, function* () {
-        return request(host, client, https_1.default, apiRequest, credentials);
+        return request(host, client, https_1.default, apiRequest, credentials, debug);
     });
 }
 exports.requestHttps = requestHttps;
-function request(host, client, transport, apiRequest, credentials) {
+function request(host, client, transport, apiRequest, credentials, debug = false) {
     return __awaiter(this, void 0, void 0, function* () {
-        const res = yield requestRaw(host, client, https_1.default, apiRequest, credentials);
+        const res = yield requestRaw(host, client, https_1.default, apiRequest, credentials, debug);
         try {
             const parsedBody = JSON.parse(res.body);
             return {
@@ -51,7 +51,7 @@ function request(host, client, transport, apiRequest, credentials) {
         }
     });
 }
-function requestRaw(host, client, transport, apiRequest, credentials) {
+function requestRaw(host, client, transport, apiRequest, credentials, debug = false) {
     return new Promise((success, reject) => {
         const { csrfToken = csrf_token_1.generateCsrf(), sessionId = csrf_token_1.generateCsrf() } = credentials || {};
         const extraParams = apiRequest.method === 'GET' ? { '_': (new Date()).getTime() } : {};
@@ -71,6 +71,9 @@ function requestRaw(host, client, transport, apiRequest, credentials) {
             options.headers['Content-type'] = 'application/x-www-form-urlencoded';
             options.headers['Content-length'] = Buffer.from(encodedData).length;
             options.headers['x-csrftoken'] = csrfToken;
+        }
+        if (debug) {
+            console.log(options);
         }
         const req = transport.request(options, (response) => {
             const chunks = [];

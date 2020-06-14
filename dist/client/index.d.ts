@@ -5,8 +5,9 @@ export declare class Client {
     private readonly host;
     private readonly protocol;
     private readonly request;
+    private readonly debug;
     private credentials?;
-    constructor(client: string, host?: string, protocol?: 'http' | 'https', credentials?: IRequestCredentials);
+    constructor(client: string, host?: string, protocol?: 'http' | 'https', credentials?: IRequestCredentials, debug?: boolean);
     private updateCredentialByResponseHeaders;
     getCredentials(): IRequestCredentials;
     getAccountInfo(accountId?: number): Promise<API.IApiAccountInfoResponse>;
