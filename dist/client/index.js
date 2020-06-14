@@ -100,6 +100,9 @@ class Client {
             }
             const { headers, response } = yield this.request(this.host, this.client, API.getInfoRequestV1v9(accountId, clientTurns), this.credentials);
             if (response_1.successResponseTypeGuard(response)) {
+                if (!response.data.account) {
+                    throw new Error("Account not found or wrong credentials");
+                }
                 return response;
             }
             throw response;

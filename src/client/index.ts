@@ -120,6 +120,10 @@ export class Client {
         );
 
         if (successResponseTypeGuard(response)) {
+            if (!response.data.account) {
+                throw new Error("Account not found or wrong credentials");
+            }
+
             return (response as API.IApiInfoResponse);
         }
 
