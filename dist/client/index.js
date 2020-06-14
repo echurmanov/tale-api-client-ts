@@ -70,6 +70,7 @@ class Client {
         return __awaiter(this, void 0, void 0, function* () {
             const { headers, response } = yield this.request(this.host, this.client, API.getAuthorisationStateV1(), this.credentials);
             if (response_1.successResponseTypeGuard(response)) {
+                this.updateCredentialByResponseHeaders(headers);
                 return response;
             }
             throw response;

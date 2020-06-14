@@ -71,6 +71,8 @@ export class Client {
         );
 
         if (successResponseTypeGuard(response)) {
+            this.updateCredentialByResponseHeaders(headers);
+
             return (response as API.IApiAuthorisationStateResponse);
         }
 
