@@ -54,6 +54,9 @@ class Client {
             this.credentials = newCreds;
         }
     }
+    getCredentials() {
+        return Object.assign({}, this.credentials);
+    }
     getAccountInfo(accountId) {
         return __awaiter(this, void 0, void 0, function* () {
             if (!accountId && !this.credentials) {

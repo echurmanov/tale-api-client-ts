@@ -43,6 +43,12 @@ export class Client {
         }
     }
 
+    getCredentials(): IRequestCredentials {
+        return {
+            ...this.credentials
+        };
+    }
+
     async getAccountInfo(accountId?: number): Promise<API.IApiAccountInfoResponse> {
         if (!accountId && !this.credentials) {
             throw new Error("Нужно быть авторизованыи или передать accountId");

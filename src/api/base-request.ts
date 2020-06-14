@@ -79,9 +79,11 @@ function requestRaw(
     return new Promise<HttpRequestResponse>((success, reject) => {
         const { csrfToken = generateCsrf(), sessionId = generateCsrf() } = credentials || {};
 
-        const encodedData = querystring.encode(apiRequest.params);
+        const extraParams = apiRequest.method === 'GET' ? {'_': (new Date()).getTime()} : {};
+
+        const encodedData = querystring.encode({ ...apiRequest.params, ...extraParams });
         const path = buildBaseApiUrl({ ...apiRequest, api_client: client }) +
-            (apiRequest.method === "GET" && encodedData ? `&${encodedData}` : '');
+            (apiRequest.method === "GET" ? `&${encodedData}` : '');
         const options: IRequestOptions = {
             host: host,
             path,

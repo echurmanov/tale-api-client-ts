@@ -54,9 +54,10 @@ function request(host, client, transport, apiRequest, credentials) {
 function requestRaw(host, client, transport, apiRequest, credentials) {
     return new Promise((success, reject) => {
         const { csrfToken = csrf_token_1.generateCsrf(), sessionId = csrf_token_1.generateCsrf() } = credentials || {};
-        const encodedData = querystring_1.default.encode(apiRequest.params);
+        const extraParams = apiRequest.method === 'GET' ? { '_': (new Date()).getTime() } : {};
+        const encodedData = querystring_1.default.encode(Object.assign(Object.assign({}, apiRequest.params), extraParams));
         const path = buildBaseApiUrl(Object.assign(Object.assign({}, apiRequest), { api_client: client })) +
-            (apiRequest.method === "GET" && encodedData ? `&${encodedData}` : '');
+            (apiRequest.method === "GET" ? `&${encodedData}` : '');
         const options = {
             host: host,
             path,
