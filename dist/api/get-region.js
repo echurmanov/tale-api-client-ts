@@ -7,7 +7,7 @@ function getRegionRequestV0v1(turn) {
         api_version: '0.1',
         method: 'GET',
         api_client: '',
-        params: {
+        getParams: {
             turn
         }
     };

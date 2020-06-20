@@ -85,9 +85,10 @@ function requestRaw(
 
         const extraParams = apiRequest.method === 'GET' ? {'_': (new Date()).getTime()} : {};
 
-        const encodedData = querystring.encode({ ...apiRequest.params, ...extraParams });
+        const encodedGetData = querystring.encode({ ...apiRequest.getParams, ...extraParams });
+        const encodedPostData = querystring.encode({ ...apiRequest.postParams });
         const path = buildBaseApiUrl({ ...apiRequest, api_client: client }) +
-            (apiRequest.method === "GET" ? `&${encodedData}` : '');
+            (apiRequest.method === "GET" ? `&${encodedGetData}` : '');
         const options: IRequestOptions = {
             host: host,
             path,
@@ -100,7 +101,7 @@ function requestRaw(
 
         if (options.method === 'POST') {
             options.headers['Content-type'] = 'application/x-www-form-urlencoded';
-            options.headers['Content-length'] = Buffer.from(encodedData).length;
+            options.headers['Content-length'] = Buffer.from(encodedPostData).length;
             options.headers['x-csrftoken'] = csrfToken;
         }
 
@@ -124,8 +125,8 @@ function requestRaw(
 
         req.on('error', reject);
 
-        if (options.method === 'POST' && encodedData) {
-            req.write(encodedData);
+        if (options.method === 'POST' && encodedPostData) {
+            req.write(encodedPostData);
         }
 
         req.end();

@@ -3,7 +3,8 @@ export interface IRequest {
     api_version: string;
     api_client: string;
     method: 'GET' | 'POST';
-    params?: Record<string, string | number>;
+    getParams?: Record<string, string | number>;
+    postParams?: Record<string, string | number>;
 }
 
 export interface IRequestCredentials {

@@ -23,7 +23,7 @@ export function getInfoRequestV1v9(account?: number, clientTurns?: number[]): IR
         api_version: '1.9',
         method: 'GET',
         api_client: '',
-        params: {
+        getParams: {
             account,
             client_turns: clientTurns ? clientTurns.join(',') : undefined
         }

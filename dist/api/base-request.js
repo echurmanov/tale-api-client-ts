@@ -55,9 +55,10 @@ function requestRaw(host, client, transport, apiRequest, credentials, debug = fa
     return new Promise((success, reject) => {
         const { csrfToken = csrf_token_1.generateCsrf(), sessionId = csrf_token_1.generateCsrf() } = credentials || {};
         const extraParams = apiRequest.method === 'GET' ? { '_': (new Date()).getTime() } : {};
-        const encodedData = querystring_1.default.encode(Object.assign(Object.assign({}, apiRequest.params), extraParams));
+        const encodedGetData = querystring_1.default.encode(Object.assign(Object.assign({}, apiRequest.getParams), extraParams));
+        const encodedPostData = querystring_1.default.encode(Object.assign({}, apiRequest.postParams));
         const path = buildBaseApiUrl(Object.assign(Object.assign({}, apiRequest), { api_client: client })) +
-            (apiRequest.method === "GET" ? `&${encodedData}` : '');
+            (apiRequest.method === "GET" ? `&${encodedGetData}` : '');
         const options = {
             host: host,
             path,
@@ -69,7 +70,7 @@ function requestRaw(host, client, transport, apiRequest, credentials, debug = fa
         };
         if (options.method === 'POST') {
             options.headers['Content-type'] = 'application/x-www-form-urlencoded';
-            options.headers['Content-length'] = Buffer.from(encodedData).length;
+            options.headers['Content-length'] = Buffer.from(encodedPostData).length;
             options.headers['x-csrftoken'] = csrfToken;
         }
         if (debug) {
@@ -88,8 +89,8 @@ function requestRaw(host, client, transport, apiRequest, credentials, debug = fa
             });
         });
         req.on('error', reject);
-        if (options.method === 'POST' && encodedData) {
-            req.write(encodedData);
+        if (options.method === 'POST' && encodedPostData) {
+            req.write(encodedPostData);
         }
         req.end();
     });

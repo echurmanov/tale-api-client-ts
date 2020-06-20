@@ -15,7 +15,7 @@ export function getRegionRequestV0v1(turn?: number): IRequest {
         api_version: '0.1',
         method: 'GET',
         api_client: '',
-        params: {
+        getParams: {
             turn
         }
     }

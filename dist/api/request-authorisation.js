@@ -14,7 +14,7 @@ function requestAuthorisationV1(applicationName, applicationDescription, request
         api_version: '1.0',
         method: 'POST',
         api_client: '',
-        params: {
+        postParams: {
             application_name: applicationName,
             application_description: applicationDescription,
             application_info: requestInfo

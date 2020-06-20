@@ -7,7 +7,7 @@ function getInfoRequestV1v9(account, clientTurns) {
         api_version: '1.9',
         method: 'GET',
         api_client: '',
-        params: {
+        getParams: {
             account,
             client_turns: clientTurns ? clientTurns.join(',') : undefined
         }

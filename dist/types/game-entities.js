@@ -1,6 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.EHeroAction = void 0;
+exports.EHeroAction = exports.ECardRarity = exports.EAbilities = void 0;
+var EAbilities;
+(function (EAbilities) {
+    EAbilities["help"] = "help";
+    EAbilities["drop_item"] = "drop_item";
+})(EAbilities = exports.EAbilities || (exports.EAbilities = {}));
+var ECardRarity;
+(function (ECardRarity) {
+    ECardRarity[ECardRarity["COMMON"] = 0] = "COMMON";
+    ECardRarity[ECardRarity["UNCOMMON"] = 1] = "UNCOMMON";
+    ECardRarity[ECardRarity["RARE"] = 2] = "RARE";
+    ECardRarity[ECardRarity["EPIC"] = 3] = "EPIC";
+    ECardRarity[ECardRarity["LEGENDARY"] = 4] = "LEGENDARY";
+})(ECardRarity = exports.ECardRarity || (exports.ECardRarity = {}));
 var EHeroAction;
 (function (EHeroAction) {
     EHeroAction[EHeroAction["NO_ACTION"] = 0] = "NO_ACTION";

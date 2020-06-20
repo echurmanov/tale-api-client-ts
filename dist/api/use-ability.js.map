@@ -1,0 +1,1 @@
+{"version":3,"file":"use-ability.js","sourceRoot":"","sources":["../../src/api/use-ability.ts"],"names":[],"mappings":";;;AAMA,SAAgB,YAAY,CAAC,OAAmB;IAC5C,OAAO;QACH,GAAG,EAAE,mBAAmB,OAAO,UAAU;QACzC,WAAW,EAAE,KAAK;QAClB,MAAM,EAAE,MAAM;QACd,UAAU,EAAE,EAAE;KACjB,CAAA;AACL,CAAC;AAPD,oCAOC"}
