@@ -14,6 +14,7 @@ __exportStar(require("./base-request"), exports);
 __exportStar(require("./get-info"), exports);
 __exportStar(require("./get-account-info"), exports);
 __exportStar(require("./get-authorisation-state"), exports);
+__exportStar(require("./get-cards"), exports);
 __exportStar(require("./get-diary"), exports);
 __exportStar(require("./get-game-info"), exports);
 __exportStar(require("./get-new-messages-number"), exports);
@@ -21,4 +22,6 @@ __exportStar(require("./get-places-list"), exports);
 __exportStar(require("./get-region"), exports);
 __exportStar(require("./request-authorisation"), exports);
 __exportStar(require("./request-logout"), exports);
+__exportStar(require("./use-ability"), exports);
+__exportStar(require("./use-card"), exports);
 //# sourceMappingURL=index.js.map

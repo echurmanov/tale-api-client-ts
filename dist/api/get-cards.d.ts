@@ -1,7 +1,7 @@
 import { IRequest } from "../types/request";
 import { TApiSuccessResponse } from "../types/response";
 import { ICardInfo } from "../types/game-entities";
-export interface IApiCardsResponse extends TApiSuccessResponse {
+export interface IApiGetCardsResponse extends TApiSuccessResponse {
     data: {
         cards: ICardInfo[];
         new_cards: number;

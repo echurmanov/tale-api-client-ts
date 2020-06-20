@@ -30,10 +30,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Client = void 0;
 const API = __importStar(require("../api"));
+const api_1 = require("../api");
 const response_1 = require("../types/response");
 const cookie_parser_1 = require("../utils/cookie-parser");
 const csrf_token_1 = require("../utils/csrf-token");
-const api_1 = require("../api");
+const game_entities_1 = require("../types/game-entities");
 class Client {
     constructor(client, host = 'the-tale.org', protocol = 'https', credentials, debug = false) {
         this.client = client;
@@ -79,6 +80,15 @@ class Client {
                 if (response.data.state === api_1.AUTH_STATE.SUCCESS) {
                     this.credentials.accountId = response.data.account_id;
                 }
+                return response;
+            }
+            throw response;
+        });
+    }
+    getCardsList() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { headers, response } = yield this.request(this.host, this.client, API.getCardsRequestV2(), this.credentials, this.debug);
+            if (response_1.successResponseTypeGuard(response)) {
                 return response;
             }
             throw response;
@@ -140,6 +150,24 @@ class Client {
             const { headers, response } = yield this.request(this.host, this.client, API.requestAuthorisationV1(appName, description, requestInfo), this.credentials, this.debug);
             if (response_1.successResponseTypeGuard(response)) {
                 this.updateCredentialByResponseHeaders(headers);
+                return response;
+            }
+            throw response;
+        });
+    }
+    useCard(cardId, value, clanName, clanAbbr) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { headers, response } = yield this.request(this.host, this.client, API.useCardV2(cardId, value, clanName, clanAbbr), this.credentials, this.debug);
+            if (response_1.processingResponseTypeGuard(response)) {
+                return response;
+            }
+            throw response;
+        });
+    }
+    useHelp() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { headers, response } = yield this.request(this.host, this.client, API.useAbilityV1(game_entities_1.EAbilities.help), this.credentials, this.debug);
+            if (response_1.processingResponseTypeGuard(response)) {
                 return response;
             }
             throw response;

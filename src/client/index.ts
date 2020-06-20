@@ -1,9 +1,10 @@
 import * as API from '../api';
-import { IRequestCredentials } from "../types/request";
-import { successResponseTypeGuard } from '../types/response';
-import { cookieParser } from "../utils/cookie-parser";
-import { generateCsrf } from "../utils/csrf-token";
-import {AUTH_STATE} from "../api";
+import {AUTH_STATE} from '../api';
+import {IRequestCredentials} from "../types/request";
+import {processingResponseTypeGuard, successResponseTypeGuard} from '../types/response';
+import {cookieParser} from "../utils/cookie-parser";
+import {generateCsrf} from "../utils/csrf-token";
+import {EAbilities} from "../types/game-entities";
 
 export class Client {
     private readonly client: string;
@@ -90,6 +91,22 @@ export class Client {
             }
 
             return (response as API.IApiAuthorisationStateResponse);
+        }
+
+        throw response;
+    }
+
+    async getCardsList(): Promise<API.IApiGetCardsResponse> {
+        const { headers, response } = await this.request(
+            this.host,
+            this.client,
+            API.getCardsRequestV2(),
+            this.credentials,
+            this.debug
+        );
+
+        if (successResponseTypeGuard(response)) {
+            return (response as API.IApiGetCardsResponse);
         }
 
         throw response;
@@ -200,6 +217,38 @@ export class Client {
             this.updateCredentialByResponseHeaders(headers);
 
             return (response as API.IApiRequestAuthorisationResponse);
+        }
+
+        throw response;
+    }
+
+    async useCard(cardId:string, value?: string, clanName?: string, clanAbbr?:string): Promise<API.IApiUseCardResponse> {
+        const { headers, response } = await this.request(
+            this.host,
+            this.client,
+            API.useCardV2(cardId, value, clanName, clanAbbr),
+            this.credentials,
+            this.debug
+        );
+
+        if (processingResponseTypeGuard(response)) {
+            return (response as API.IApiUseCardResponse);
+        }
+
+        throw response;
+    }
+
+    async useHelp(): Promise<API.IApiUseAbilityResponse> {
+        const { headers, response } = await this.request(
+            this.host,
+            this.client,
+            API.useAbilityV1(EAbilities.help),
+            this.credentials,
+            this.debug
+        );
+
+        if (processingResponseTypeGuard(response)) {
+            return (response as API.IApiUseAbilityResponse);
         }
 
         throw response;

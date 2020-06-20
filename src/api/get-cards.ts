@@ -2,7 +2,7 @@ import { IRequest } from "../types/request";
 import { TApiSuccessResponse } from "../types/response";
 import { ICardInfo } from "../types/game-entities";
 
-export interface IApiCardsResponse extends TApiSuccessResponse {
+export interface IApiGetCardsResponse extends TApiSuccessResponse {
     data: {
         cards: ICardInfo[];             // список карт
         new_cards:number;               // количество новых карт, которые можно получить
