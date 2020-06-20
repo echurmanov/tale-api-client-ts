@@ -58,7 +58,7 @@ function requestRaw(host, client, transport, apiRequest, credentials, debug = fa
         const encodedGetData = querystring_1.default.encode(Object.assign(Object.assign({}, apiRequest.getParams), extraParams));
         const encodedPostData = querystring_1.default.encode(Object.assign({}, apiRequest.postParams));
         const path = buildBaseApiUrl(Object.assign(Object.assign({}, apiRequest), { api_client: client })) +
-            (apiRequest.method === "GET" ? `&${encodedGetData}` : '');
+            (encodedGetData ? `&${encodedGetData}` : '');
         const options = {
             host: host,
             path,

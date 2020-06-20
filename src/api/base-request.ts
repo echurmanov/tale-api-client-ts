@@ -88,7 +88,7 @@ function requestRaw(
         const encodedGetData = querystring.encode({ ...apiRequest.getParams, ...extraParams });
         const encodedPostData = querystring.encode({ ...apiRequest.postParams });
         const path = buildBaseApiUrl({ ...apiRequest, api_client: client }) +
-            (apiRequest.method === "GET" ? `&${encodedGetData}` : '');
+            (encodedGetData ? `&${encodedGetData}` : '');
         const options: IRequestOptions = {
             host: host,
             path,
