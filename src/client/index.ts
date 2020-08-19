@@ -200,6 +200,42 @@ export class Client {
         throw response;
     }
 
+    async moveCardsToHand(
+        cards: string|string[],
+    ): Promise<API.IApiMoveCardsToHandResponse> {
+        const { headers, response } = await this.request(
+            this.host,
+            this.client,
+            API.moveCardToHandV2(cards),
+            this.credentials,
+            this.debug
+        );
+
+        if (successResponseTypeGuard(response)) {
+            return (response as API.IApiMoveCardsToHandResponse);
+        }
+
+        throw response;
+    }
+
+    async moveCardsToStorage(
+        cards: string|string[],
+    ): Promise<API.IApiMoveCardsToStorageResponse> {
+        const { headers, response } = await this.request(
+            this.host,
+            this.client,
+            API.moveCardToStorageV2(cards),
+            this.credentials,
+            this.debug
+        );
+
+        if (successResponseTypeGuard(response)) {
+            return (response as API.IApiMoveCardsToStorageResponse);
+        }
+
+        throw response;
+    }
+
     async requestAuthorisation(
         appName: string,
         description: string,

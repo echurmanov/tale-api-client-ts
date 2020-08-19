@@ -22,6 +22,8 @@ __exportStar(require("./get-places-list"), exports);
 __exportStar(require("./get-region"), exports);
 __exportStar(require("./request-authorisation"), exports);
 __exportStar(require("./request-logout"), exports);
+__exportStar(require("./move-card-to-hand"), exports);
+__exportStar(require("./move-card-to-storage"), exports);
 __exportStar(require("./use-ability"), exports);
 __exportStar(require("./use-card"), exports);
 //# sourceMappingURL=index.js.map

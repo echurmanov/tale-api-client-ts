@@ -105,6 +105,13 @@ function requestRaw(
             options.headers['x-csrftoken'] = csrfToken;
         }
 
+        if (apiRequest.formData) {
+            options.headers = {
+                ...options.headers,
+                ...apiRequest.formData.getHeaders()
+            }
+        }
+
         if (debug) {
             console.log(options);
         }
@@ -129,6 +136,10 @@ function requestRaw(
             req.write(encodedPostData);
         }
 
-        req.end();
+        if (apiRequest.formData) {
+            apiRequest.formData.pipe(req);
+        } else {
+            req.end();
+        }
     });
 }

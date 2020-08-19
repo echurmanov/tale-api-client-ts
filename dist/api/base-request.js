@@ -73,6 +73,9 @@ function requestRaw(host, client, transport, apiRequest, credentials, debug = fa
             options.headers['Content-length'] = Buffer.from(encodedPostData).length;
             options.headers['x-csrftoken'] = csrfToken;
         }
+        if (apiRequest.formData) {
+            options.headers = Object.assign(Object.assign({}, options.headers), apiRequest.formData.getHeaders());
+        }
         if (debug) {
             console.log(options);
         }
@@ -92,7 +95,12 @@ function requestRaw(host, client, transport, apiRequest, credentials, debug = fa
         if (options.method === 'POST' && encodedPostData) {
             req.write(encodedPostData);
         }
-        req.end();
+        if (apiRequest.formData) {
+            apiRequest.formData.pipe(req);
+        }
+        else {
+            req.end();
+        }
     });
 }
 //# sourceMappingURL=base-request.js.map

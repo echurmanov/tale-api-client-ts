@@ -10,5 +10,7 @@ export * from './get-places-list';
 export * from './get-region';
 export * from './request-authorisation';
 export * from './request-logout';
+export * from './move-card-to-hand';
+export * from './move-card-to-storage';
 export * from './use-ability';
 export * from './use-card';

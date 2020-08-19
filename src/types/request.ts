@@ -1,3 +1,5 @@
+import FormData from 'form-data';
+
 export interface IRequest {
     uri: string;
     api_version: string;
@@ -5,6 +7,7 @@ export interface IRequest {
     method: 'GET' | 'POST';
     getParams?: Record<string, string | number>;
     postParams?: Record<string, string | number>;
+    formData?: FormData
 }
 
 export interface IRequestCredentials {

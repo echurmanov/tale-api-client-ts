@@ -145,6 +145,24 @@ class Client {
             throw response;
         });
     }
+    moveCardsToHand(cards) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { headers, response } = yield this.request(this.host, this.client, API.moveCardToHandV2(cards), this.credentials, this.debug);
+            if (response_1.successResponseTypeGuard(response)) {
+                return response;
+            }
+            throw response;
+        });
+    }
+    moveCardsToStorage(cards) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { headers, response } = yield this.request(this.host, this.client, API.moveCardToStorageV2(cards), this.credentials, this.debug);
+            if (response_1.successResponseTypeGuard(response)) {
+                return response;
+            }
+            throw response;
+        });
+    }
     requestAuthorisation(appName, description, requestInfo) {
         return __awaiter(this, void 0, void 0, function* () {
             const { headers, response } = yield this.request(this.host, this.client, API.requestAuthorisationV1(appName, description, requestInfo), this.credentials, this.debug);

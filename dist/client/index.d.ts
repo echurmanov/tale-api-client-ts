@@ -18,6 +18,8 @@ export declare class Client {
     getInfo(accountId?: number, clientTurns?: number[]): Promise<API.IApiInfoResponse>;
     getPlacesList(): Promise<API.IApiPlacesListResponse>;
     getRegion(): Promise<API.IApiRegionResponse>;
+    moveCardsToHand(cards: string | string[]): Promise<API.IApiMoveCardsToHandResponse>;
+    moveCardsToStorage(cards: string | string[]): Promise<API.IApiMoveCardsToStorageResponse>;
     requestAuthorisation(appName: string, description: string, requestInfo: string): Promise<API.IApiRequestAuthorisationResponse>;
     useCard(cardId: string, value?: string, clanName?: string, clanAbbr?: string): Promise<API.IApiUseCardResponse>;
     useHelp(): Promise<API.IApiUseAbilityResponse>;
