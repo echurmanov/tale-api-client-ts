@@ -12,6 +12,7 @@ export declare class Client {
     getCredentials(): IRequestCredentials;
     getAccountInfo(accountId?: number): Promise<API.IApiAccountInfoResponse>;
     getAuthorisationState(): Promise<API.IApiAuthorisationStateResponse>;
+    login(email: string, password: string, remember?: boolean, nextUrl?: string): Promise<API.IApiLoginResponse>;
     getCardsList(): Promise<API.IApiGetCardsResponse>;
     getDiary(): Promise<API.IApiDiaryResponse>;
     getGameInfo(): Promise<API.IApiGameInfoResponse>;
@@ -20,7 +21,9 @@ export declare class Client {
     getRegion(): Promise<API.IApiRegionResponse>;
     moveCardsToHand(cards: string | string[]): Promise<API.IApiMoveCardsToHandResponse>;
     moveCardsToStorage(cards: string | string[]): Promise<API.IApiMoveCardsToStorageResponse>;
+    receiveCards(): Promise<API.IApiReceiveCardsResponse>;
     requestAuthorisation(appName: string, description: string, requestInfo: string): Promise<API.IApiRequestAuthorisationResponse>;
+    shopSellCard(cards: string | string[], price: number): Promise<API.IApiShopSellCardResponse>;
     useCard(cardId: string, value?: string, clanName?: string, clanAbbr?: string): Promise<API.IApiUseCardResponse>;
     useHelp(): Promise<API.IApiUseAbilityResponse>;
 }

@@ -65,16 +65,16 @@ function requestRaw(host, client, transport, apiRequest, credentials, debug = fa
             method: apiRequest.method === 'POST' ? 'POST' : 'GET',
             headers: {
                 Referer: 'https://' + host,
-                Cookie: `csrftoken=${csrfToken}; sessionid=${sessionId}`
+                Cookie: `csrftoken=${csrfToken}; sessionid=${sessionId}`,
+                'x-csrftoken': csrfToken
             }
         };
-        if (options.method === 'POST') {
-            options.headers['Content-type'] = 'application/x-www-form-urlencoded';
-            options.headers['Content-length'] = Buffer.from(encodedPostData).length;
-            options.headers['x-csrftoken'] = csrfToken;
-        }
         if (apiRequest.formData) {
             options.headers = Object.assign(Object.assign({}, options.headers), apiRequest.formData.getHeaders());
+        }
+        else if (options.method === 'POST') {
+            options.headers['content-type'] = 'application/x-www-form-urlencoded';
+            options.headers['content-length'] = Buffer.from(encodedPostData).length;
         }
         if (debug) {
             console.log(options);

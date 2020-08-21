@@ -85,6 +85,19 @@ class Client {
             throw response;
         });
     }
+    login(email, password, remember = false, nextUrl = '/') {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { headers, response } = yield this.request(this.host, this.client, API.loginV1(email, password, remember, nextUrl), this.credentials, this.debug);
+            if (response_1.successResponseTypeGuard(response)) {
+                this.updateCredentialByResponseHeaders(headers);
+                if (response.data.state === api_1.AUTH_STATE.SUCCESS) {
+                    this.credentials.accountId = response.data.account_id;
+                }
+                return response;
+            }
+            throw response;
+        });
+    }
     getCardsList() {
         return __awaiter(this, void 0, void 0, function* () {
             const { headers, response } = yield this.request(this.host, this.client, API.getCardsRequestV2(), this.credentials, this.debug);
@@ -163,11 +176,29 @@ class Client {
             throw response;
         });
     }
+    receiveCards() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { headers, response } = yield this.request(this.host, this.client, API.receiveCardsV1(), this.credentials, this.debug);
+            if (response_1.successResponseTypeGuard(response)) {
+                return response;
+            }
+            throw response;
+        });
+    }
     requestAuthorisation(appName, description, requestInfo) {
         return __awaiter(this, void 0, void 0, function* () {
             const { headers, response } = yield this.request(this.host, this.client, API.requestAuthorisationV1(appName, description, requestInfo), this.credentials, this.debug);
             if (response_1.successResponseTypeGuard(response)) {
                 this.updateCredentialByResponseHeaders(headers);
+                return response;
+            }
+            throw response;
+        });
+    }
+    shopSellCard(cards, price) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { headers, response } = yield this.request(this.host, this.client, API.shopSellCardV0(cards, price), this.credentials, this.debug);
+            if (response_1.successResponseTypeGuard(response)) {
                 return response;
             }
             throw response;

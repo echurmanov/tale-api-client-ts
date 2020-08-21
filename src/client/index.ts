@@ -96,6 +96,32 @@ export class Client {
         throw response;
     }
 
+    async login(email: string,
+                password:string,
+                remember: boolean = false,
+                nextUrl: string = '/'
+    ): Promise<API.IApiLoginResponse> {
+        const { headers, response } = await this.request(
+            this.host,
+            this.client,
+            API.loginV1(email, password, remember, nextUrl),
+            this.credentials,
+            this.debug
+        );
+
+        if (successResponseTypeGuard(response)) {
+            this.updateCredentialByResponseHeaders(headers);
+
+            if (response.data.state === AUTH_STATE.SUCCESS) {
+                this.credentials.accountId = (response as API.IApiLoginResponse).data.account_id;
+            }
+
+            return (response as API.IApiLoginResponse);
+        }
+
+        throw response;
+    }
+
     async getCardsList(): Promise<API.IApiGetCardsResponse> {
         const { headers, response } = await this.request(
             this.host,
@@ -236,6 +262,22 @@ export class Client {
         throw response;
     }
 
+    async receiveCards(): Promise<API.IApiReceiveCardsResponse> {
+        const { headers, response } = await this.request(
+            this.host,
+            this.client,
+            API.receiveCardsV1(),
+            this.credentials,
+            this.debug
+        );
+
+        if (successResponseTypeGuard(response)) {
+            return (response as API.IApiReceiveCardsResponse);
+        }
+
+        throw response;
+    }
+
     async requestAuthorisation(
         appName: string,
         description: string,
@@ -253,6 +295,25 @@ export class Client {
             this.updateCredentialByResponseHeaders(headers);
 
             return (response as API.IApiRequestAuthorisationResponse);
+        }
+
+        throw response;
+    }
+
+    async shopSellCard(
+        cards: string|string[],
+        price: number
+    ): Promise<API.IApiShopSellCardResponse> {
+        const { headers, response } = await this.request(
+            this.host,
+            this.client,
+            API.shopSellCardV0(cards, price),
+            this.credentials,
+            this.debug
+        );
+
+        if (successResponseTypeGuard(response)) {
+            return (response as API.IApiShopSellCardResponse);
         }
 
         throw response;

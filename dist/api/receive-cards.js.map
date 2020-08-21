@@ -1,0 +1,1 @@
+{"version":3,"file":"receive-cards.js","sourceRoot":"","sources":["../../src/api/receive-cards.ts"],"names":[],"mappings":";;;AAQA,SAAgB,cAAc;IAC1B,OAAO;QACH,GAAG,EAAE,yBAAyB;QAC9B,WAAW,EAAE,KAAK;QAClB,MAAM,EAAE,MAAM;QACd,UAAU,EAAE,EAAE;KACjB,CAAA;AACL,CAAC;AAPD,wCAOC"}
