@@ -1,0 +1,1 @@
+{"version":3,"file":"shop-get-lot-detail.js","sourceRoot":"","sources":["../../src/api/shop-get-lot-detail.ts"],"names":[],"mappings":";;;AAUA,SAAgB,mBAAmB,CAAC,YAAoB;IACpD,OAAO;QACH,GAAG,EAAE,wBAAwB;QAC7B,WAAW,EAAE,KAAK;QAClB,MAAM,EAAE,KAAK;QACb,UAAU,EAAE,EAAE;QACd,SAAS,EAAE;YACP,SAAS,EAAE,YAAY;SAC1B;KACJ,CAAA;AACL,CAAC;AAVD,kDAUC"}

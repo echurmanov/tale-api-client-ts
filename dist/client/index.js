@@ -60,6 +60,15 @@ class Client {
     getCredentials() {
         return Object.assign({}, this.credentials);
     }
+    cardCombine(cardUids) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { headers, response } = yield this.request(this.host, this.client, API.cardCombineV3(cardUids), this.credentials, this.debug);
+            if (response_1.successResponseTypeGuard(response)) {
+                return response;
+            }
+            throw response;
+        });
+    }
     getAccountInfo(accountId) {
         return __awaiter(this, void 0, void 0, function* () {
             if (!accountId && (!this.credentials || !this.credentials.accountId)) {
@@ -140,6 +149,12 @@ class Client {
             throw response;
         });
     }
+    getPage(uri, getParams) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { headers, responseText } = yield this.request(this.host, this.client, API.getPageV0(uri, getParams), this.credentials, this.debug, true);
+            return responseText;
+        });
+    }
     getPlacesList() {
         return __awaiter(this, void 0, void 0, function* () {
             const { headers, response } = yield this.request(this.host, this.client, API.getPlacesListRequestV1v1(), this.credentials, this.debug);
@@ -190,6 +205,33 @@ class Client {
             const { headers, response } = yield this.request(this.host, this.client, API.requestAuthorisationV1(appName, description, requestInfo), this.credentials, this.debug);
             if (response_1.successResponseTypeGuard(response)) {
                 this.updateCredentialByResponseHeaders(headers);
+                return response;
+            }
+            throw response;
+        });
+    }
+    shopCancelSellCard(cardFullType, price) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { headers, response } = yield this.request(this.host, this.client, API.shopCancelSellCardV0(cardFullType, price), this.credentials, this.debug);
+            if (response_1.successResponseTypeGuard(response)) {
+                return response;
+            }
+            throw response;
+        });
+    }
+    shopGetInfo() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { headers, response } = yield this.request(this.host, this.client, API.shopInfoV0(), this.credentials, this.debug);
+            if (response_1.successResponseTypeGuard(response)) {
+                return response;
+            }
+            throw response;
+        });
+    }
+    shopGetLotDetails(cardFullType) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { headers, response } = yield this.request(this.host, this.client, API.shopGetLotDetailsV0(cardFullType), this.credentials, this.debug);
+            if (response_1.successResponseTypeGuard(response)) {
                 return response;
             }
             throw response;

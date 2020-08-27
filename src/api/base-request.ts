@@ -20,7 +20,8 @@ interface HttpRequestResponse {
 
 export interface RequestResponse {
     headers: Record<string, string | string[]>;
-    response: Response.TApiResponse
+    response?: Response.TApiResponse;
+    responseText: string;
 }
 
 function buildBaseApiUrl(request: IRequest) {
@@ -37,9 +38,10 @@ export async function requestHttp(
     client: string,
     apiRequest: IRequest,
     credentials?: IRequestCredentials,
-    debug: boolean = false
+    debug: boolean = false,
+    allowHtml: boolean = false
 ): Promise<RequestResponse> {
-    return request(host, client, http, apiRequest, credentials, debug);
+    return request(host, client, http, apiRequest, credentials, debug, allowHtml);
 }
 
 export async function requestHttps(
@@ -47,9 +49,10 @@ export async function requestHttps(
     client: string,
     apiRequest: IRequest,
     credentials?: IRequestCredentials,
-    debug: boolean = false
+    debug: boolean = false,
+    allowHtml: boolean = false
 ): Promise<RequestResponse> {
-    return request(host, client, https, apiRequest, credentials, debug);
+    return request(host, client, https, apiRequest, credentials, debug, allowHtml);
 }
 
 async function request( host: string,
@@ -57,18 +60,23 @@ async function request( host: string,
                         transport: typeof http | typeof https,
                         apiRequest: IRequest,
                         credentials?: IRequestCredentials,
-                        debug: boolean = false
+                        debug: boolean = false,
+                        allowHtml: boolean = false
 ): Promise<RequestResponse> {
     const res = await requestRaw(host, client, https, apiRequest, credentials, debug);
+    let parsedBody;
     try {
-        const parsedBody = JSON.parse(res.body);
-
-        return {
-            headers: res.headers,
-            response: parsedBody
-        }
+        parsedBody = JSON.parse(res.body);
     } catch (e) {
-        throw new Error("Error on parse server response. Not JSON: " + res.body);
+        if (!allowHtml) {
+            throw new Error("Error on parse server response. Not JSON: " + res.body);
+        }
+    }
+
+    return {
+        headers: res.headers,
+        response: parsedBody,
+        responseText: res.body
     }
 }
 

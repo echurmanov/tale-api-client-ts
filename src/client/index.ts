@@ -54,6 +54,22 @@ export class Client {
         };
     }
 
+    async cardCombine(cardUids: string[]): Promise<API.IApiCardCombineResponse> {
+        const { headers, response } = await this.request(
+            this.host,
+            this.client,
+            API.cardCombineV3(cardUids),
+            this.credentials,
+            this.debug
+        );
+
+        if (successResponseTypeGuard(response)) {
+            return (response as API.IApiCardCombineResponse);
+        }
+
+        throw response;
+    }
+
     async getAccountInfo(accountId?: number): Promise<API.IApiAccountInfoResponse> {
         if (!accountId && (!this.credentials || !this.credentials.accountId)) {
             throw new Error("Нужно быть авторизованыи или передать accountId");
@@ -194,6 +210,19 @@ export class Client {
         throw response;
     }
 
+    async getPage(uri: string, getParams?: object): Promise<string> {
+        const { headers, responseText } = await this.request(
+            this.host,
+            this.client,
+            API.getPageV0(uri, getParams),
+            this.credentials,
+            this.debug,
+            true
+        );
+
+        return responseText;
+    }
+
     async getPlacesList(): Promise<API.IApiPlacesListResponse> {
         const { headers, response } = await this.request(
             this.host,
@@ -300,10 +329,55 @@ export class Client {
         throw response;
     }
 
-    async shopSellCard(
-        cards: string|string[],
-        price: number
-    ): Promise<API.IApiShopSellCardResponse> {
+    async shopCancelSellCard(cardFullType: string, price: number): Promise<API.IApiShopSellCardResponse> {
+        const { headers, response } = await this.request(
+            this.host,
+            this.client,
+            API.shopCancelSellCardV0(cardFullType, price),
+            this.credentials,
+            this.debug
+        );
+
+        if (successResponseTypeGuard(response)) {
+            return (response as API.IApiShopCancelSellCardResponse);
+        }
+
+        throw response;
+    }
+
+    async shopGetInfo(): Promise<API.IApiShopInfoResponse> {
+        const { headers, response } = await this.request(
+            this.host,
+            this.client,
+            API.shopInfoV0(),
+            this.credentials,
+            this.debug
+        );
+
+        if (successResponseTypeGuard(response)) {
+            return (response as API.IApiShopInfoResponse);
+        }
+
+        throw response;
+    }
+
+    async shopGetLotDetails(cardFullType: string): Promise<API.IApiShopGetLotDetailsResponse> {
+        const { headers, response } = await this.request(
+            this.host,
+            this.client,
+            API.shopGetLotDetailsV0(cardFullType),
+            this.credentials,
+            this.debug
+        );
+
+        if (successResponseTypeGuard(response)) {
+            return (response as API.IApiShopGetLotDetailsResponse);
+        }
+
+        throw response;
+    }
+
+    async shopSellCard(cards: string|string[], price: number): Promise<API.IApiShopSellCardResponse> {
         const { headers, response } = await this.request(
             this.host,
             this.client,

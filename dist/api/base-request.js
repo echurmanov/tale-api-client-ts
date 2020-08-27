@@ -24,31 +24,35 @@ function buildBaseApiUrl(request) {
     };
     return `${request.uri}?${querystring_1.default.encode(baseParams)}`;
 }
-function requestHttp(host, client, apiRequest, credentials, debug = false) {
+function requestHttp(host, client, apiRequest, credentials, debug = false, allowHtml = false) {
     return __awaiter(this, void 0, void 0, function* () {
-        return request(host, client, http_1.default, apiRequest, credentials, debug);
+        return request(host, client, http_1.default, apiRequest, credentials, debug, allowHtml);
     });
 }
 exports.requestHttp = requestHttp;
-function requestHttps(host, client, apiRequest, credentials, debug = false) {
+function requestHttps(host, client, apiRequest, credentials, debug = false, allowHtml = false) {
     return __awaiter(this, void 0, void 0, function* () {
-        return request(host, client, https_1.default, apiRequest, credentials, debug);
+        return request(host, client, https_1.default, apiRequest, credentials, debug, allowHtml);
     });
 }
 exports.requestHttps = requestHttps;
-function request(host, client, transport, apiRequest, credentials, debug = false) {
+function request(host, client, transport, apiRequest, credentials, debug = false, allowHtml = false) {
     return __awaiter(this, void 0, void 0, function* () {
         const res = yield requestRaw(host, client, https_1.default, apiRequest, credentials, debug);
+        let parsedBody;
         try {
-            const parsedBody = JSON.parse(res.body);
-            return {
-                headers: res.headers,
-                response: parsedBody
-            };
+            parsedBody = JSON.parse(res.body);
         }
         catch (e) {
-            throw new Error("Error on parse server response. Not JSON: " + res.body);
+            if (!allowHtml) {
+                throw new Error("Error on parse server response. Not JSON: " + res.body);
+            }
         }
+        return {
+            headers: res.headers,
+            response: parsedBody,
+            responseText: res.body
+        };
     });
 }
 function requestRaw(host, client, transport, apiRequest, credentials, debug = false) {

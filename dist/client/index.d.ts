@@ -10,6 +10,7 @@ export declare class Client {
     constructor(client: string, host?: string, protocol?: 'http' | 'https', credentials?: IRequestCredentials, debug?: boolean);
     private updateCredentialByResponseHeaders;
     getCredentials(): IRequestCredentials;
+    cardCombine(cardUids: string[]): Promise<API.IApiCardCombineResponse>;
     getAccountInfo(accountId?: number): Promise<API.IApiAccountInfoResponse>;
     getAuthorisationState(): Promise<API.IApiAuthorisationStateResponse>;
     login(email: string, password: string, remember?: boolean, nextUrl?: string): Promise<API.IApiLoginResponse>;
@@ -17,12 +18,16 @@ export declare class Client {
     getDiary(): Promise<API.IApiDiaryResponse>;
     getGameInfo(): Promise<API.IApiGameInfoResponse>;
     getInfo(accountId?: number, clientTurns?: number[]): Promise<API.IApiInfoResponse>;
+    getPage(uri: string, getParams?: object): Promise<string>;
     getPlacesList(): Promise<API.IApiPlacesListResponse>;
     getRegion(): Promise<API.IApiRegionResponse>;
     moveCardsToHand(cards: string | string[]): Promise<API.IApiMoveCardsToHandResponse>;
     moveCardsToStorage(cards: string | string[]): Promise<API.IApiMoveCardsToStorageResponse>;
     receiveCards(): Promise<API.IApiReceiveCardsResponse>;
     requestAuthorisation(appName: string, description: string, requestInfo: string): Promise<API.IApiRequestAuthorisationResponse>;
+    shopCancelSellCard(cardFullType: string, price: number): Promise<API.IApiShopSellCardResponse>;
+    shopGetInfo(): Promise<API.IApiShopInfoResponse>;
+    shopGetLotDetails(cardFullType: string): Promise<API.IApiShopGetLotDetailsResponse>;
     shopSellCard(cards: string | string[], price: number): Promise<API.IApiShopSellCardResponse>;
     useCard(cardId: string, value?: string, clanName?: string, clanAbbr?: string): Promise<API.IApiUseCardResponse>;
     useHelp(): Promise<API.IApiUseAbilityResponse>;

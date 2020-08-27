@@ -1,0 +1,1 @@
+{"version":3,"file":"get-page.js","sourceRoot":"","sources":["../../src/api/get-page.ts"],"names":[],"mappings":";;;AAKA,SAAgB,SAAS,CAAC,GAAW,EAAE,SAAkB;IACrD,OAAO;QACH,GAAG,EAAE,GAAG;QACR,WAAW,EAAE,KAAK;QAClB,MAAM,EAAE,KAAK;QACb,UAAU,EAAE,EAAE;QACd,SAAS,oBACF,SAAS,CACf;KACJ,CAAA;AACL,CAAC;AAVD,8BAUC"}
