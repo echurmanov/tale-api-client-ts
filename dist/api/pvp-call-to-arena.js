@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.pvpCallToArenaV01 = void 0;
 function pvpCallToArenaV01() {
     return {
-        uri: `/game/pvp/api/api-call-to-arena`,
+        uri: `/game/pvp/api/call-to-arena`,
         api_version: '0.1',
         method: 'POST',
         api_client: '',

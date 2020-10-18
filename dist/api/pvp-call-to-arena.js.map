@@ -1,1 +1,1 @@
-{"version":3,"file":"pvp-call-to-arena.js","sourceRoot":"","sources":["../../src/api/pvp-call-to-arena.ts"],"names":[],"mappings":";;;AAUA,SAAgB,iBAAiB;IAC7B,OAAO;QACH,GAAG,EAAE,iCAAiC;QACtC,WAAW,EAAE,KAAK;QAClB,MAAM,EAAE,MAAM;QACd,UAAU,EAAE,EAAE;KACjB,CAAA;AACL,CAAC;AAPD,8CAOC"}
+{"version":3,"file":"pvp-call-to-arena.js","sourceRoot":"","sources":["../../src/api/pvp-call-to-arena.ts"],"names":[],"mappings":";;;AAUA,SAAgB,iBAAiB;IAC7B,OAAO;QACH,GAAG,EAAE,6BAA6B;QAClC,WAAW,EAAE,KAAK;QAClB,MAAM,EAAE,MAAM;QACd,UAAU,EAAE,EAAE;KACjB,CAAA;AACL,CAAC;AAPD,8CAOC"}

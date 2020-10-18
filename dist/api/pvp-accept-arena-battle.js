@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.pvpAcceptArenaBattleV01 = void 0;
 function pvpAcceptArenaBattleV01(battleRequestId) {
     return {
-        uri: `/game/pvp/api/api-accept-arena-battle`,
+        uri: `/game/pvp/api/accept-arena-battle`,
         api_version: '0.1',
         method: 'POST',
         api_client: '',

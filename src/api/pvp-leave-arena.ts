@@ -10,7 +10,7 @@ export interface IApiPvpLeaveArenaResponse extends TApiSuccessResponse {
 
 export function pvpLeaveArenaV01(): IRequest {
     return {
-        uri: `/game/pvp/api/api-leave-arena`,
+        uri: `/game/pvp/api/leave-arena`,
         api_version: '0.1',
         method: 'POST',
         api_client: '',

@@ -10,7 +10,7 @@ export interface IApiPvpCallToArenaResponse extends TApiSuccessResponse {
 
 export function pvpCallToArenaV01(): IRequest {
     return {
-        uri: `/game/pvp/api/api-call-to-arena`,
+        uri: `/game/pvp/api/call-to-arena`,
         api_version: '0.1',
         method: 'POST',
         api_client: '',

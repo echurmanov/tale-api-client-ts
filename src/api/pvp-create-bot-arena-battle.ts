@@ -5,7 +5,7 @@ export interface IApiPvpCreateBotArenaBattleResponse extends TApiProcessingRespo
 
 export function pvpCreateBotArenaBattleV01(): IRequest {
     return {
-        uri: `/game/pvp/api/api-create-arena-bot-battle`,
+        uri: `/game/pvp/api/create-arena-bot-battle`,
         api_version: '0.1',
         method: 'POST',
         api_client: '',
