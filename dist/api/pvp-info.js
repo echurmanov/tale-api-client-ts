@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.pvpArenaInfoV01 = void 0;
 function pvpArenaInfoV01() {
     return {
-        uri: `/game/pvp/api/api-info`,
+        uri: `/game/pvp/api/info`,
         api_version: '0.1',
         method: 'GET',
         api_client: '',

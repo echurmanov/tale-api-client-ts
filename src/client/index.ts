@@ -71,7 +71,7 @@ export class Client {
     }
 
     async getAccountInfo(accountId?: number): Promise<API.IApiAccountInfoResponse> {
-        if (!accountId && (!this.credentials || !this.credentials.accountId)) {
+        if (!accountId && !this.credentials) {
             throw new Error("Нужно быть авторизованыи или передать accountId");
         }
 

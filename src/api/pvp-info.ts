@@ -10,7 +10,7 @@ export interface IApiPvpArenaInfoResponse extends TApiSuccessResponse {
 
 export function pvpArenaInfoV01(): IRequest {
     return {
-        uri: `/game/pvp/api/api-info`,
+        uri: `/game/pvp/api/info`,
         api_version: '0.1',
         method: 'GET',
         api_client: '',

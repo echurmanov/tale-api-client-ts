@@ -1,1 +1,1 @@
-{"version":3,"file":"pvp-info.js","sourceRoot":"","sources":["../../src/api/pvp-info.ts"],"names":[],"mappings":";;;AAUA,SAAgB,eAAe;IAC3B,OAAO;QACH,GAAG,EAAE,wBAAwB;QAC7B,WAAW,EAAE,KAAK;QAClB,MAAM,EAAE,KAAK;QACb,UAAU,EAAE,EAAE;KACjB,CAAA;AACL,CAAC;AAPD,0CAOC"}
+{"version":3,"file":"pvp-info.js","sourceRoot":"","sources":["../../src/api/pvp-info.ts"],"names":[],"mappings":";;;AAUA,SAAgB,eAAe;IAC3B,OAAO;QACH,GAAG,EAAE,oBAAoB;QACzB,WAAW,EAAE,KAAK;QAClB,MAAM,EAAE,KAAK;QACb,UAAU,EAAE,EAAE;KACjB,CAAA;AACL,CAAC;AAPD,0CAOC"}

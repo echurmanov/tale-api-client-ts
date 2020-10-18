@@ -71,7 +71,7 @@ class Client {
     }
     getAccountInfo(accountId) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (!accountId && (!this.credentials || !this.credentials.accountId)) {
+            if (!accountId && !this.credentials) {
                 throw new Error("Нужно быть авторизованыи или передать accountId");
             }
             const { headers, response } = yield this.request(this.host, this.client, API.getAccountInfoRequestV1(accountId || this.credentials.accountId), this.credentials, this.debug);
