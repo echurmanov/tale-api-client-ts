@@ -291,6 +291,86 @@ export class Client {
         throw response;
     }
 
+    async pvpAcceptArenaBattle(requestBattleId: number): Promise<API.IApiPvpAcceptArenaBattleResponse> {
+        const { headers, response } = await this.request(
+            this.host,
+            this.client,
+            API.pvpAcceptArenaBattleV01(requestBattleId),
+            this.credentials,
+            this.debug
+        );
+
+        if (processingResponseTypeGuard(response)) {
+            return (response as API.IApiPvpAcceptArenaBattleResponse);
+        }
+
+        throw response;
+    }
+
+    async pvpCallToArena(): Promise<API.IApiPvpCallToArenaResponse> {
+        const { headers, response } = await this.request(
+            this.host,
+            this.client,
+            API.pvpCallToArenaV01(),
+            this.credentials,
+            this.debug
+        );
+
+        if (successResponseTypeGuard(response)) {
+            return (response as API.IApiPvpCallToArenaResponse);
+        }
+
+        throw response;
+    }
+
+    async pvpCreateBotArenaBattle(): Promise<API.IApiPvpCreateBotArenaBattleResponse> {
+        const { headers, response } = await this.request(
+            this.host,
+            this.client,
+            API.pvpCreateBotArenaBattleV01(),
+            this.credentials,
+            this.debug
+        );
+
+        if (processingResponseTypeGuard(response)) {
+            return (response as API.IApiPvpCreateBotArenaBattleResponse);
+        }
+
+        throw response;
+    }
+
+    async pvpArenaInfo(): Promise<API.IApiPvpArenaInfoResponse> {
+        const { headers, response } = await this.request(
+            this.host,
+            this.client,
+            API.pvpArenaInfoV01(),
+            this.credentials,
+            this.debug
+        );
+
+        if (successResponseTypeGuard(response)) {
+            return (response as API.IApiPvpArenaInfoResponse);
+        }
+
+        throw response;
+    }
+
+    async pvpLeaveArena(): Promise<API.IApiPvpLeaveArenaResponse> {
+        const { headers, response } = await this.request(
+            this.host,
+            this.client,
+            API.pvpLeaveArenaV01(),
+            this.credentials,
+            this.debug
+        );
+
+        if (successResponseTypeGuard(response)) {
+            return (response as API.IApiPvpLeaveArenaResponse);
+        }
+
+        throw response;
+    }
+
     async receiveCards(): Promise<API.IApiReceiveCardsResponse> {
         const { headers, response } = await this.request(
             this.host,

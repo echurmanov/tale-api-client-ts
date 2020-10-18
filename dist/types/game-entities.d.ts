@@ -117,6 +117,13 @@ export interface IAccountInfo {
     hero: IHeroInfo;
     energy: number | null;
 }
+export interface IArenaBattleRequest {
+    id: number;
+    initiator_id: number;
+    matchmaker_type: number;
+    created_at: number;
+    updated_at: number;
+}
 export interface IArtifactInfo {
     name: string;
     power: [number, number];
@@ -235,6 +242,13 @@ export interface IPlace {
     };
     size: number;
     specialization: number;
+}
+export interface IPvpInfo {
+    accounts: [];
+    clans: [];
+    active_arena_battles: number;
+    active_bot_battles: number;
+    arena_battle_requests: IArenaBattleRequest[];
 }
 export interface IQuest {
     line: IQuestLine[];

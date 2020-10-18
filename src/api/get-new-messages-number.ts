@@ -4,7 +4,6 @@ import { TApiSuccessResponse } from "../types/response";
 export interface IApiNewMessagesNumberResponse extends TApiSuccessResponse {
     data: {
         "number": number; // количество новых сообщений
-
     }
 }
 

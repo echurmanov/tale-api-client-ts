@@ -1,0 +1,1 @@
+{"version":3,"file":"pvp-accept-arena-battle.js","sourceRoot":"","sources":["../../src/api/pvp-accept-arena-battle.ts"],"names":[],"mappings":";;;AAKA,SAAgB,uBAAuB,CAAC,eAAuB;IAC3D,OAAO;QACH,GAAG,EAAE,uCAAuC;QAC5C,WAAW,EAAE,KAAK;QAClB,MAAM,EAAE,MAAM;QACd,UAAU,EAAE,EAAE;QACd,SAAS,EAAE;YACP,iBAAiB,EAAE,eAAe;SACrC;KACJ,CAAA;AACL,CAAC;AAVD,0DAUC"}

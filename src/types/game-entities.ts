@@ -124,6 +124,14 @@ export interface IAccountInfo {
     energy: number | null;   // энергия игрока
 }
 
+export interface IArenaBattleRequest {
+    id: number;               // идентификатор вызова
+    initiator_id: number;     // идентификатор игрока, отправившего вызов
+    matchmaker_type: number;  // тип боя, см. в списке типов
+    created_at: number;       // дата создания вызова
+    updated_at: number;       // дата обновления вызова
+}
+
 export interface IArtifactInfo {
     name: string;                // название
     power: [number, number];     // сила [физическая, магическая]
@@ -262,6 +270,14 @@ export interface IPlace {
     }; // (могут меняться при изменении размера карты!)
     size: number;             // размер города
     specialization: number;   // идентификатор специализации
+}
+
+export interface IPvpInfo {
+    accounts: [];                                   //
+    clans: [];                                      //
+    active_arena_battles: number;                   //
+    active_bot_battles: number;                     //
+    arena_battle_requests: IArenaBattleRequest[];   // список активных вызовов на арену
 }
 
 export interface IQuest {

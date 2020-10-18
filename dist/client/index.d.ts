@@ -23,6 +23,11 @@ export declare class Client {
     getRegion(): Promise<API.IApiRegionResponse>;
     moveCardsToHand(cards: string | string[]): Promise<API.IApiMoveCardsToHandResponse>;
     moveCardsToStorage(cards: string | string[]): Promise<API.IApiMoveCardsToStorageResponse>;
+    pvpAcceptArenaBattle(requestBattleId: number): Promise<API.IApiPvpAcceptArenaBattleResponse>;
+    pvpCallToArena(): Promise<API.IApiPvpCallToArenaResponse>;
+    pvpCreateBotArenaBattle(): Promise<API.IApiPvpCreateBotArenaBattleResponse>;
+    pvpArenaInfo(): Promise<API.IApiPvpArenaInfoResponse>;
+    pvpLeaveArena(): Promise<API.IApiPvpLeaveArenaResponse>;
     receiveCards(): Promise<API.IApiReceiveCardsResponse>;
     requestAuthorisation(appName: string, description: string, requestInfo: string): Promise<API.IApiRequestAuthorisationResponse>;
     shopCancelSellCard(cardFullType: string, price: number): Promise<API.IApiShopSellCardResponse>;

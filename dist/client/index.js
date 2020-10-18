@@ -191,6 +191,51 @@ class Client {
             throw response;
         });
     }
+    pvpAcceptArenaBattle(requestBattleId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { headers, response } = yield this.request(this.host, this.client, API.pvpAcceptArenaBattleV01(requestBattleId), this.credentials, this.debug);
+            if (response_1.processingResponseTypeGuard(response)) {
+                return response;
+            }
+            throw response;
+        });
+    }
+    pvpCallToArena() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { headers, response } = yield this.request(this.host, this.client, API.pvpCallToArenaV01(), this.credentials, this.debug);
+            if (response_1.successResponseTypeGuard(response)) {
+                return response;
+            }
+            throw response;
+        });
+    }
+    pvpCreateBotArenaBattle() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { headers, response } = yield this.request(this.host, this.client, API.pvpCreateBotArenaBattleV01(), this.credentials, this.debug);
+            if (response_1.processingResponseTypeGuard(response)) {
+                return response;
+            }
+            throw response;
+        });
+    }
+    pvpArenaInfo() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { headers, response } = yield this.request(this.host, this.client, API.pvpArenaInfoV01(), this.credentials, this.debug);
+            if (response_1.successResponseTypeGuard(response)) {
+                return response;
+            }
+            throw response;
+        });
+    }
+    pvpLeaveArena() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { headers, response } = yield this.request(this.host, this.client, API.pvpLeaveArenaV01(), this.credentials, this.debug);
+            if (response_1.successResponseTypeGuard(response)) {
+                return response;
+            }
+            throw response;
+        });
+    }
     receiveCards() {
         return __awaiter(this, void 0, void 0, function* () {
             const { headers, response } = yield this.request(this.host, this.client, API.receiveCardsV1(), this.credentials, this.debug);
