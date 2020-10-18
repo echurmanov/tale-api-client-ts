@@ -1,36 +1,30 @@
 {
-    "name": "tale-api-client-ts",
-    "version": "0.4.1",
-    "description": "The Tale Game API client",
-    "main": "dist/index.js",
-    "scripts": {
-        "build": "tsc --declaration",
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/echurmanov/tale-api-client-ts.git"
-    },
-    "keywords": [
-        "API",
-        "the-tale",
-        "client",
-        "JavaScript"
-    ],
-    "author": "Eugene Churmanov",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/echurmanov/tale-api-client-ts/issues"
-    },
-    "homepage": "https://github.com/echurmanov/tale-api-client-ts#readme",
-    "devDependencies": {
-        "@types/form-data": "^2.5.0",
-        "@types/node": "^14.0.12",
-        "eslint": "^7.2.0",
-        "typescript": "^3.9.5"
-    },
-    "dependencies": {
-        "form-data": "^3.0.0",
-        "node": "^14.4.0"
-    }
+  "name": "@echurmanov/tale-api-client-ts",
+  "version": "0.4.1",
+  "description": "The Tale Game API client",
+  "main": "dist/index.js",
+  "dependencies": {
+    "form-data": "^3.0.0",
+    "node": "^14.4.0"
+  },
+  "devDependencies": {
+    "@types/form-data": "^2.5.0",
+    "@types/node": "^14.0.12",
+    "eslint": "^7.2.0",
+    "typescript": "^3.9.5"
+  },
+  "scripts": {
+    "build": "tsc --declaration",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/echurmanov/tale-api-client-ts.git"
+  },
+  "author": "Eugene Churmanov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/echurmanov/tale-api-client-ts/issues"
+  },
+  "homepage": "https://github.com/echurmanov/tale-api-client-ts#readme"
 }
