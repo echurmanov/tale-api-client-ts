@@ -1,0 +1,6 @@
+.idea/
+tests/
+src/
+dist/tests/
+node_modules/
+dist/**/*.map
