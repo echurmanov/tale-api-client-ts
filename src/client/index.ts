@@ -128,9 +128,7 @@ export class Client {
         if (successResponseTypeGuard(response)) {
             this.updateCredentialByResponseHeaders(headers);
 
-            if (response.data.state === AUTH_STATE.SUCCESS) {
-                this.credentials.accountId = (response as API.IApiLoginResponse).data.account_id;
-            }
+            this.credentials.accountId = (response as API.IApiLoginResponse).data.account_id;
 
             return (response as API.IApiLoginResponse);
         }
