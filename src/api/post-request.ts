@@ -1,9 +1,9 @@
 import { IRequest } from "../types/request";
 import { TApiSuccessResponse } from "../types/response";
 
-export interface IPageResponse extends TApiSuccessResponse {}
+export interface IPostResponse extends TApiSuccessResponse {}
 
-export function getPageV0(uri: string, formParams?: object): IRequest {
+export function postRequestV0(uri: string, formParams?: object): IRequest {
     const formData = new FormData();
 
     if (formParams) {
