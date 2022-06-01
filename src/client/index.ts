@@ -253,7 +253,7 @@ export class Client {
         throw response;
     }
     
-    async postRequest(uri: string, formParams?: object): Promise {
+    async postRequest(uri: string, formParams?: object): Promise<string> {
         const { headers, responseText } = await this.request(
             this.host,
             this.client,

@@ -8,6 +8,7 @@ export * from './get-diary';
 export * from './get-game-info';
 export * from './get-new-messages-number';
 export * from './get-page';
+export * from './post-request';
 export * from './get-places-list';
 export * from './get-region';
 export * from './login';

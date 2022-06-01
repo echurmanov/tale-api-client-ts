@@ -20,6 +20,7 @@ __exportStar(require("./get-diary"), exports);
 __exportStar(require("./get-game-info"), exports);
 __exportStar(require("./get-new-messages-number"), exports);
 __exportStar(require("./get-page"), exports);
+__exportStar(require("./post-request"), exports);
 __exportStar(require("./get-places-list"), exports);
 __exportStar(require("./get-region"), exports);
 __exportStar(require("./login"), exports);

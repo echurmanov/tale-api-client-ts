@@ -99,9 +99,7 @@ class Client {
             const { headers, response } = yield this.request(this.host, this.client, API.loginV1(email, password, remember, nextUrl), this.credentials, this.debug);
             if (response_1.successResponseTypeGuard(response)) {
                 this.updateCredentialByResponseHeaders(headers);
-                if (response.data.state === api_1.AUTH_STATE.SUCCESS) {
-                    this.credentials.accountId = response.data.account_id;
-                }
+                this.credentials.accountId = response.data.account_id;
                 return response;
             }
             throw response;
@@ -171,6 +169,12 @@ class Client {
                 return response;
             }
             throw response;
+        });
+    }
+    postRequest(uri, formParams) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { headers, responseText } = yield this.request(this.host, this.client, API.postRequestV0(uri, formParams), this.credentials, this.debug, true);
+            return responseText;
         });
     }
     moveCardsToHand(cards) {

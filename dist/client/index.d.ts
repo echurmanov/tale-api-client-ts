@@ -21,6 +21,7 @@ export declare class Client {
     getPage(uri: string, getParams?: object): Promise<string>;
     getPlacesList(): Promise<API.IApiPlacesListResponse>;
     getRegion(): Promise<API.IApiRegionResponse>;
+    postRequest(uri: string, formParams?: object): Promise<string>;
     moveCardsToHand(cards: string | string[]): Promise<API.IApiMoveCardsToHandResponse>;
     moveCardsToStorage(cards: string | string[]): Promise<API.IApiMoveCardsToStorageResponse>;
     pvpAcceptArenaBattle(requestBattleId: number): Promise<API.IApiPvpAcceptArenaBattleResponse>;

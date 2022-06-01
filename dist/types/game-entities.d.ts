@@ -88,7 +88,8 @@ export declare type TCardType = 5 | //капля энергии
 157 | //гильдейские дела
 156 | //снова в путь
 158 | //общественные дела
-159;
+159 | //личные дела
+160;
 export declare enum EHeroAction {
     NO_ACTION = 0,
     QUEST_PROCESS = 1,

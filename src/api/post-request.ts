@@ -1,3 +1,5 @@
+import FormData from 'form-data';
+
 import { IRequest } from "../types/request";
 import { TApiSuccessResponse } from "../types/response";
 
@@ -7,7 +9,7 @@ export function postRequestV0(uri: string, formParams?: object): IRequest {
     const formData = new FormData();
 
     if (formParams) {
-        Object.values(formParams).forEach(k => formData.append(k, formParams[k]));
+        Object.values(formParams).forEach((k: keyof object) => formData.append(k, formParams[k]));
     }
 
     return {
