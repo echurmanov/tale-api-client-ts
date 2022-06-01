@@ -252,6 +252,19 @@ export class Client {
 
         throw response;
     }
+    
+    async postRequest(uri: string, formParams?: object): Promise {
+        const { headers, responseText } = await this.request(
+            this.host,
+            this.client,
+            API.postRequestV0(uri, formParams),
+            this.credentials,
+            this.debug,
+            true
+        );
+
+        return responseText;
+    }
 
     async moveCardsToHand(
         cards: string|string[],
