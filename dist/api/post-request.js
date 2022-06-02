@@ -8,7 +8,7 @@ const form_data_1 = __importDefault(require("form-data"));
 function postRequestV0(uri, formParams) {
     const formData = new form_data_1.default();
     if (formParams) {
-        Object.values(formParams).forEach((k) => formData.append(k, formParams[k]));
+        Object.keys(formParams).forEach((k) => formData.append(k, formParams[k]));
     }
     return {
         uri: uri,
