@@ -196,6 +196,9 @@ export interface IHeroInfo {
         initiative: number;
     };
     diary: string;
+    path: {
+        cells: [number, number][];
+    } | null;
     messages: TMessage[];
     habits: Record<// черты
     string, // идентификатор черты

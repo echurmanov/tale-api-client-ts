@@ -214,6 +214,10 @@ export interface IHeroInfo {
 
     diary: string;                          // версия дневника героя, если она изменилась, необходимо перезапросить дневни
 
+    path: {                                 // Маршрут героя по карте
+        cells: [number, number][]
+    } | null;
+
     messages: TMessage[];                   // сообщения из журнала
 
     habits: Record<                         // черты
