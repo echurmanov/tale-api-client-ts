@@ -81,9 +81,9 @@ class Client {
             throw response;
         });
     }
-    getAuthorisationState() {
+    getAuthorisationState(v1_1 = false) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { headers, response } = yield this.request(this.host, this.client, API.getAuthorisationStateV1(), this.credentials, this.debug);
+            const { headers, response } = yield this.request(this.host, this.client, v1_1 ? API.getAuthorisationStateV1_1() : API.getAuthorisationStateV1(), this.credentials, this.debug);
             if (response_1.successResponseTypeGuard(response)) {
                 this.updateCredentialByResponseHeaders(headers);
                 if (response.data.state === api_1.AUTH_STATE.SUCCESS) {
@@ -249,11 +249,14 @@ class Client {
             throw response;
         });
     }
-    requestAuthorisation(appName, description, requestInfo) {
+    requestAuthorisation(appName, description, requestInfo, v1_1 = false) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { headers, response } = yield this.request(this.host, this.client, API.requestAuthorisationV1(appName, description, requestInfo), this.credentials, this.debug);
+            const { headers, response } = yield this.request(this.host, this.client, v1_1 ? API.requestAuthorisationV1_1(appName, description, requestInfo) : API.requestAuthorisationV1(appName, description, requestInfo), this.credentials, this.debug);
             if (response_1.successResponseTypeGuard(response)) {
                 this.updateCredentialByResponseHeaders(headers);
+                if (response.data.token) {
+                    this.credentials.accessToken = response.data.token;
+                }
                 return response;
             }
             throw response;

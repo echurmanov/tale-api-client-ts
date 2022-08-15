@@ -12,7 +12,7 @@ export declare class Client {
     getCredentials(): IRequestCredentials;
     cardCombine(cardUids: string[]): Promise<API.IApiCardCombineResponse>;
     getAccountInfo(accountId?: number): Promise<API.IApiAccountInfoResponse>;
-    getAuthorisationState(): Promise<API.IApiAuthorisationStateResponse>;
+    getAuthorisationState(v1_1?: boolean): Promise<API.IApiAuthorisationStateResponse>;
     login(email: string, password: string, remember?: boolean, nextUrl?: string): Promise<API.IApiLoginResponse>;
     getCardsList(): Promise<API.IApiGetCardsResponse>;
     getDiary(): Promise<API.IApiDiaryResponse>;
@@ -30,7 +30,7 @@ export declare class Client {
     pvpArenaInfo(): Promise<API.IApiPvpArenaInfoResponse>;
     pvpLeaveArena(): Promise<API.IApiPvpLeaveArenaResponse>;
     receiveCards(): Promise<API.IApiReceiveCardsResponse>;
-    requestAuthorisation(appName: string, description: string, requestInfo: string): Promise<API.IApiRequestAuthorisationResponse>;
+    requestAuthorisation(appName: string, description: string, requestInfo: string, v1_1?: boolean): Promise<API.IApiRequestAuthorisationResponse>;
     shopCancelSellCard(cardFullType: string, price: number): Promise<API.IApiShopSellCardResponse>;
     shopGetInfo(): Promise<API.IApiShopInfoResponse>;
     shopGetLotDetails(cardFullType: string): Promise<API.IApiShopGetLotDetailsResponse>;

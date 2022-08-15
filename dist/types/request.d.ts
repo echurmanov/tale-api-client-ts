@@ -12,4 +12,5 @@ export interface IRequestCredentials {
     accountId?: number;
     sessionId?: string;
     csrfToken: string;
+    accessToken?: string;
 }

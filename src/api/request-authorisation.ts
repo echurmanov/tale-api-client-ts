@@ -4,6 +4,7 @@ import { TApiSuccessResponse } from "../types/response";
 export interface IApiRequestAuthorisationResponse extends TApiSuccessResponse {
     data: {
         "authorisation_page": "string"; // адрес, на который необходимо направить пользователя для подтверждения авторизации
+        "token"?: string;
     }
 }
 
@@ -22,6 +23,31 @@ export function requestAuthorisationV1(
     return {
         uri: '/accounts/third-party/tokens/api/request-authorisation',
         api_version: '1.0',
+        method: 'POST',
+        api_client: '',
+        postParams:{
+            application_name: applicationName,
+            application_description: applicationDescription,
+            application_info: requestInfo
+        }
+    }
+}
+
+/**
+ *
+ *
+ * @param applicationName Название "приложения"
+ * @param applicationDescription Описание приложения
+ * @param requestInfo Информация о запросе (время, источник и тп)
+ */
+export function requestAuthorisationV1_1(
+    applicationName: string,
+    applicationDescription:string,
+    requestInfo: string
+): IRequest {
+    return {
+        uri: '/accounts/third-party/tokens/api/request-authorisation',
+        api_version: '1.1',
         method: 'POST',
         api_client: '',
         postParams:{

@@ -3,6 +3,7 @@ import { TApiSuccessResponse } from "../types/response";
 export interface IApiRequestAuthorisationResponse extends TApiSuccessResponse {
     data: {
         "authorisation_page": "string";
+        "token"?: string;
     };
 }
 /**
@@ -13,3 +14,11 @@ export interface IApiRequestAuthorisationResponse extends TApiSuccessResponse {
  * @param requestInfo Информация о запросе (время, источник и тп)
  */
 export declare function requestAuthorisationV1(applicationName: string, applicationDescription: string, requestInfo: string): IRequest;
+/**
+ *
+ *
+ * @param applicationName Название "приложения"
+ * @param applicationDescription Описание приложения
+ * @param requestInfo Информация о запросе (время, источник и тп)
+ */
+export declare function requestAuthorisationV1_1(applicationName: string, applicationDescription: string, requestInfo: string): IRequest;

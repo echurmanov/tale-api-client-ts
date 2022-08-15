@@ -26,3 +26,12 @@ export function getAuthorisationStateV1(): IRequest {
         api_client: ''
     }
 }
+
+export function getAuthorisationStateV1_1(): IRequest {
+    return {
+        uri: '/accounts/third-party/tokens/api/authorisation-state',
+        api_version: '1.1',
+        method: 'GET',
+        api_client: ''
+    }
+}

@@ -16,3 +16,4 @@ export interface IApiAuthorisationStateResponse extends TApiSuccessResponse {
     };
 }
 export declare function getAuthorisationStateV1(): IRequest;
+export declare function getAuthorisationStateV1_1(): IRequest;

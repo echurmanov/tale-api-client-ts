@@ -104,9 +104,13 @@ function requestRaw(
             headers: {
                 Referer: 'https://' + host,
                 Cookie: `csrftoken=${csrfToken}; sessionid=${sessionId}`,
-                'x-csrftoken': csrfToken
+                'x-csrftoken': csrfToken,
             }
         };
+
+        if (credentials && credentials.accessToken) {
+            options.headers['third-party-token'] = credentials.accessToken;
+        }
 
         if (apiRequest.formData) {
             options.headers = {

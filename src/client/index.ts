@@ -90,11 +90,11 @@ export class Client {
         throw response;
     }
 
-    async getAuthorisationState(): Promise<API.IApiAuthorisationStateResponse> {
+    async getAuthorisationState(v1_1 = false): Promise<API.IApiAuthorisationStateResponse> {
         const { headers, response } = await this.request(
             this.host,
             this.client,
-            API.getAuthorisationStateV1(),
+            v1_1 ? API.getAuthorisationStateV1_1() : API.getAuthorisationStateV1(),
             this.credentials,
             this.debug
         );
@@ -401,18 +401,23 @@ export class Client {
     async requestAuthorisation(
         appName: string,
         description: string,
-        requestInfo: string
+        requestInfo: string,
+        v1_1 = false
     ): Promise<API.IApiRequestAuthorisationResponse> {
         const { headers, response } = await this.request(
             this.host,
             this.client,
-            API.requestAuthorisationV1(appName, description, requestInfo),
+            v1_1 ? API.requestAuthorisationV1_1(appName, description, requestInfo) : API.requestAuthorisationV1(appName, description, requestInfo),
             this.credentials,
             this.debug
         );
 
         if (successResponseTypeGuard(response)) {
             this.updateCredentialByResponseHeaders(headers);
+
+            if (response.data.token) {
+                this.credentials.accessToken = response.data.token;
+            }
 
             return (response as API.IApiRequestAuthorisationResponse);
         }
